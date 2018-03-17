@@ -13,8 +13,11 @@ datagroup: siparadigm_default_datagroup {
 
 persist_with: siparadigm_default_datagroup
 
+<<<<<<< HEAD
 explore: oncologists {}
 
+=======
+>>>>>>> branch 'dev-amr-mostafa-yk4n' of git@github.com:simplifico/SiParadigmsimplifico.git
 explore: oncologists_for_loading {}
 
 explore: si_paradigm_billing_details_with_icd10_2017 {}

@@ -114,6 +114,7 @@ view: oncologists_for_loading {
   dimension: state_code_of_the_provider {
     type: string
     sql: ${TABLE}.`State Code of the Provider` ;;
+<<<<<<< HEAD
   }
 
   dimension: street_address_1_of_the_provider {
@@ -135,4 +136,43 @@ view: oncologists_for_loading {
     type: count
     drill_fields: []
   }
+=======
+    drill_fields: [zip_code_of_the_provider]
+    map_layer_name: us_states
+  }
+
+  dimension: street_address_1_of_the_provider {
+    type: string
+    sql: ${TABLE}.`Street Address 1 of the Provider` ;;
+  }
+
+  dimension: street_address_2_of_the_provider {
+    type: string
+    sql: ${TABLE}.`Street Address 2 of the Provider` ;;
+  }
+
+  dimension: zip_code_of_the_provider {
+    type: zipcode
+    sql: ${TABLE}.`Zip Code of the Provider` ;;
+    map_layer_name: us_zipcode_tabulation_areas
+  }
+
+  measure: count {
+    type: count
+    drill_fields: []
+  }
+
+  measure: total_ave_medic_alowed{
+    type: sum
+    sql: ${average_medicare_allowed_amount}
+    ;;
+  }
+
+  measure: mean_average{
+    type: number
+    sql: ${total_ave_medic_alowed}/${count}
+    ;;
+  }
+
+>>>>>>> branch 'dev-amr-mostafa-yk4n' of git@github.com:simplifico/SiParadigmsimplifico.git
 }
