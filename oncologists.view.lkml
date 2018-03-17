@@ -1,5 +1,5 @@
-view: oncologists_for_loading {
-  sql_table_name: SiParadigm.Oncologists for Loading ;;
+view: oncologists {
+  sql_table_name: SiParadigm.Oncologists ;;
 
   dimension: average_medicare_allowed_amount {
     type: number
@@ -52,7 +52,7 @@ view: oncologists_for_loading {
   }
 
   dimension: hcpcs_code {
-    type: string
+    type: number
     sql: ${TABLE}.`HCPCS Code` ;;
   }
 
@@ -83,11 +83,11 @@ view: oncologists_for_loading {
 
   dimension: national_provider_identifier {
     type: number
-    sql: ${TABLE}.`National Provider Identifier` ;;
+    sql: ${TABLE}.`﻿National Provider Identifier` ;;
   }
 
   dimension: number_of_distinct_medicare_beneficiaryper_day_services {
-    type: number
+    type: string
     sql: ${TABLE}.`Number of Distinct Medicare Beneficiary/Per Day Services` ;;
   }
 
@@ -114,8 +114,6 @@ view: oncologists_for_loading {
   dimension: state_code_of_the_provider {
     type: string
     sql: ${TABLE}.`State Code of the Provider` ;;
-    drill_fields: [zip_code_of_the_provider]
-    map_layer_name: us_states
   }
 
   dimension: street_address_1_of_the_provider {
@@ -129,26 +127,23 @@ view: oncologists_for_loading {
   }
 
   dimension: zip_code_of_the_provider {
-    type: zipcode
+    type: number
     sql: ${TABLE}.`Zip Code of the Provider` ;;
-    map_layer_name: us_zipcode_tabulation_areas
   }
 
   measure: count {
     type: count
     drill_fields: []
   }
-
-  measure: total_ave_medic_alowed{
+  measure: total_average_medicare_allowed_amount{
     type: sum
     sql: ${average_medicare_allowed_amount}
-    ;;
+      ;;
   }
 
   measure: mean_average{
     type: number
-    sql: ${total_ave_medic_alowed}/${count}
-    ;;
+    sql: ${total_average_medicare_allowed_amount}/${count}
+      ;;
   }
-
 }
